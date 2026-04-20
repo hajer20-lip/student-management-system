@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Student</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #f4f4f4; 
+            color: #333; 
+            padding: 20px;
+        }
+        h2 {
+            color: #4CAF50; 
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        input {
+            padding: 10px;
+            margin: 10px 0;
+            width: 250px;
+            border: 2px solid #4CAF50; 
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+        }
+        input:focus {
+            border-color: #FF9800; 
+            outline: none; 
+        }
+        button {
+            padding: 10px;
+            margin: 10px 0;
+            width: 250px;
+            background-color: #4CAF50; 
+            color: white; 
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        button:hover {
+            background-color: #45a049; 
+        }
+        a {
+            text-decoration: none;
+            color: #FF9800; 
+            font-weight: bold;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        a:hover {
+            color: #FF5722; 
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Add Student</h2>
+
+    <input id="name" placeholder="Name" required>
+
+    <input id="id" placeholder="ID" required>
+
+    <input id="course" placeholder="Course" required>
+
+
+    <button onclick="add()">Save</button>
+    
+
+
+    <a href="dashboard.html">Back</a>
+
+    <script>
+        function add() {
+            let students = JSON.parse(localStorage.getItem("students")) || [];
+
+            let name = document.getElementById("name").value;
+            let id = document.getElementById("id").value;
+            let course = document.getElementById("course").value;
+
+            if (name && id && course) {
+                students.push({ name, id, course });
+                localStorage.setItem("students", JSON.stringify(students));
+                alert("Student Added!");
+            } else {
+                alert("Please fill in all fields.");
+            }
+        }
+    </script>
+
+</body>
+</html>
